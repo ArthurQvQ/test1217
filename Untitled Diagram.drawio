@@ -30,6 +30,9 @@
                         <mxGeometry x="160" y="100" width="125" height="40" as="geometry"/>
                     </mxCell>
                 </UserObject>
+                <mxCell id="41" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="13" target="19">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
                 <UserObject label="asiainspection  github" linkTarget="_blank" link="https://github.com/asiainspection" id="13">
                     <mxCell style="fontColor=#ffffff;fontStyle=4;rounded=1;overflow=hidden;spacing=10;fillColor=#1ba1e2;strokeColor=#006EAF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
                         <mxGeometry x="156.25" y="190" width="132.5" height="40" as="geometry"/>
@@ -39,10 +42,10 @@
                     <mxGeometry x="230" y="150" width="260" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="16" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-                    <mxGeometry x="130" y="260" width="20" height="270" as="geometry"/>
+                    <mxGeometry x="130" y="280" width="20" height="270" as="geometry"/>
                 </mxCell>
                 <mxCell id="17" value="Monday" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-                    <mxGeometry x="75" y="385" width="60" height="20" as="geometry"/>
+                    <mxGeometry x="75" y="405" width="60" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="18" value="Friday&lt;br&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
                     <mxGeometry x="80" y="120" width="50" height="20" as="geometry"/>
@@ -52,61 +55,64 @@
                 </mxCell>
                 <UserObject label="Jenkins" linkTarget="_blank" link="https://devops.qima.com/" id="19">
                     <mxCell style="fontColor=#ffffff;fontStyle=4;rounded=1;overflow=hidden;spacing=10;fillColor=#008a00;strokeColor=#005700;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-                        <mxGeometry x="180" y="240" width="85" height="40" as="geometry"/>
+                        <mxGeometry x="180" y="260" width="85" height="40" as="geometry"/>
                     </mxCell>
                 </UserObject>
                 <mxCell id="25" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="20" target="24">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="227" y="390" as="targetPoint"/>
+                        <mxPoint x="227" y="410" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="20" value="New PP Env" style="whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-                    <mxGeometry x="162.5" y="325" width="120" height="40" as="geometry"/>
+                    <mxGeometry x="162.5" y="345" width="120" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="22" value="build and deploy based on release branch" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#005700;fillColor=#008a00;fontColor=#ffffff;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-                    <mxGeometry x="230" y="290" width="240" height="20" as="geometry"/>
+                    <mxGeometry x="230" y="310" width="240" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="27" style="edgeStyle=none;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="24">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="210" y="410" as="targetPoint"/>
+                        <mxPoint x="210" y="430" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="32" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="24" target="31">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="24" value="fix issue on release" style="whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-                    <mxGeometry x="162.5" y="420" width="120" height="40" as="geometry"/>
+                    <mxGeometry x="162.5" y="440" width="120" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="26" value="Test if all ticket done" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#005700;fillColor=#008a00;fontColor=#ffffff;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-                    <mxGeometry x="230" y="380" width="120" height="20" as="geometry"/>
+                    <mxGeometry x="230" y="400" width="120" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="30" value="merge release into dev and master" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#006EAF;fillColor=#1ba1e2;fontColor=#ffffff;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-                    <mxGeometry x="230" y="480" width="200" height="20" as="geometry"/>
+                    <mxGeometry x="230" y="500" width="200" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="31" target="37">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <UserObject label="asiainspection  github" linkTarget="_blank" link="https://github.com/asiainspection" id="31">
                     <mxCell style="fontColor=#ffffff;fontStyle=4;rounded=1;overflow=hidden;spacing=10;fillColor=#1ba1e2;strokeColor=#006EAF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-                        <mxGeometry x="156.25" y="510" width="132.5" height="40" as="geometry"/>
+                        <mxGeometry x="156.25" y="530" width="132.5" height="40" as="geometry"/>
                     </mxCell>
                 </UserObject>
                 <mxCell id="33" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-                    <mxGeometry x="130" y="600" width="20" height="100" as="geometry"/>
+                    <mxGeometry x="130" y="625" width="20" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="34" value="Tuesday" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-                    <mxGeometry x="70" y="650" width="60" height="20" as="geometry"/>
+                    <mxGeometry x="70" y="675" width="60" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="39" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="37" target="38">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <UserObject label="Jenkins" linkTarget="_blank" link="https://devops.qima.com/" id="37">
                     <mxCell style="fontColor=#ffffff;fontStyle=4;rounded=1;overflow=hidden;spacing=10;fillColor=#008a00;strokeColor=#005700;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-                        <mxGeometry x="180" y="585" width="85" height="40" as="geometry"/>
+                        <mxGeometry x="180" y="610" width="85" height="40" as="geometry"/>
                     </mxCell>
                 </UserObject>
                 <mxCell id="38" value="New Pro Env" style="whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-                    <mxGeometry x="162.5" y="670" width="120" height="40" as="geometry"/>
+                    <mxGeometry x="162.5" y="695" width="120" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="40" value="build and deploy based on master" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#005700;fillColor=#008a00;fontColor=#ffffff;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-                    <mxGeometry x="230" y="640" width="200" height="20" as="geometry"/>
+                    <mxGeometry x="230" y="665" width="200" height="20" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
