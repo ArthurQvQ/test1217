@@ -1,0 +1,148 @@
+node() {
+    script {
+        // set JDK env variable
+        env.JAVA_HOME="${tool 'openjdk'}"
+        env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+
+        def URL_ASIAN_SPECT = 'https://github.com/asiainspection/'
+        def CREDENT = '5540db2b-369e-4a48-820e-f0970c41dd9a'
+        
+        def infos = params.infos.trim().replace('Back End=', '').replace('Front End=', '').replace('public API','Public-API').split(' ')
+        def branch_var = 'arthur_'
+        
+        // format services
+        services = [];
+        for (info in infos) {
+            info = info.trim()
+            if (!info) {
+                continue
+            }
+            name = info.split('=')[0]
+            realName = translateName(name)
+            services.add(realName);
+        }
+        services.unique()
+
+
+        for (info in services) {
+            cleanWs()
+
+            name = info.split('=')[0]
+            dev_branch = 'develop'
+
+            try {
+                stage(name) {
+                    // pull code from remote
+                    git url: "${URL_ASIAN_SPECT}${name}.git",
+                    credentialsId: CREDENT,
+                    branch: dev_branch
+                    
+                    withCredentials([usernamePassword(credentialsId: CREDENT, usernameVariable: "GIT_USERNAME", passwordVariable: "GIT_PASSWORD")]) {
+                        try {
+                            sh "git checkout ${branch_var}master"
+                        } catch (err) {
+                            sh "git checkout -b ${branch_var}master"
+                        }
+                        sh "git pull origin master"
+                        sh "git push origin ${branch_var}master"
+
+                        if (name != 'LT' && name != 'commons') {
+                            // sh "git checkout ${branch_var}${dev_branch}"
+                            // sh "git pull origin ${branch_var}${dev_branch}"
+                            try {
+                                sh "git checkout ${branch_var}${dev_branch}"
+                                sh "git pull origin ${branch_var}${dev_branch}"
+                            } catch (err) {
+                                sh "git checkout -b ${branch_var}${dev_branch}"
+                            }
+                            sh "git push origin ${branch_var}master"
+                        }
+                    }
+                }
+            } catch (err) {
+                echo "error:${err}"
+                continue
+            }
+        }
+    }
+}
+
+def translateName(name) {
+    def realName = ''
+    switch (name) {
+        case 'AIMS-services-api':
+        case 'aims-web':
+        case 'AIMS-web':
+        case 'aims-service':
+        case 'AIMS-service':
+        case 'LT-DTO':
+        case 'LT-constant':
+        case 'LT-converter':
+        case 'LT-model':
+        case 'LT-utility':
+        case 'data-service':
+        case 'data-services':
+        case 'data-services-api':
+        case 'doc-service':
+        case 'doc-services-api':
+        case 'document-service':
+        case 'external-service':
+        case 'external-service-api':
+        case 'external-services-api':
+        case 'program-service':
+        case 'program-services-api':
+        case 'program-web':
+            realName = 'LT'
+            break;
+        case 'ACA':
+            realName = 'aca'
+            break
+        case 'b2b-service':
+            realName = 'B2B_DT_Service'
+            break
+        case 'backoffice-portal-service':
+            realName = 'backoffice-portal'
+            break
+        case 'checklist-web':
+            realName = 'checklist'
+            break
+        case 'finance-service':
+        case 'finance-web':
+            realName = 'Finance'
+            break
+        case 'gi-web':
+            realName = 'GI-WEB'
+            break
+        case 'gi-service':
+            realName = 'GI-SERVICE'
+            break
+        case 'irp-web':
+            realName = 'irp'
+            break
+        case 'msg-admin':
+        case 'msg-common':
+        case 'msg-core':
+        case 'msg-jms':
+        case 'msg-service-api':
+            realName = 'qima-msg-util'
+            break
+        case 'param-service':
+        case 'parameter-web':
+            realName = 'parameter-service'
+            break
+        case 'psi-service':
+        case 'psi-web':
+            realName = 'psi'
+            break
+        case 'public API':
+            realName = 'Public-API'
+            break
+        case 'sso-common':
+        case 'sso-management':
+            realName = 'sso-suite'
+            break
+        default:
+            realName = name
+    }
+    return realName
+}
