@@ -1,0 +1,14 @@
+node() {
+    script {
+        try {
+            stage(name) {
+                sh 'git config --global user.name "Your Name"'
+                sh 'git config --global user.email "youremail@yourdomain.com"'
+                sh "git config --list"
+            }
+        } catch (err) {
+            echo "error:${err}"
+            continue
+        }
+    }
+}

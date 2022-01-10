@@ -8,7 +8,7 @@ node() {
         def CREDENT = '5540db2b-369e-4a48-820e-f0970c41dd9a'
         
         def infos = params.infos.trim().replace('Back End=', '').replace('Front End=', '').replace('public API','Public-API').split(' ')
-        def branch_var = ''
+        def branch_var = 'arthur_'
         def common_version = ''
         
         // format services and version
@@ -73,7 +73,7 @@ node() {
                             pushRemote("${branch_var}release-${common_version}")
                             
                             // build common jar
-                            sh "mvn --settings /var/lib/jenkins/settings.xml clean -U deploy -Dmaven.test.failure.ignore=false"
+                            // sh "mvn --settings /var/lib/jenkins/settings.xml clean -U deploy -Dmaven.test.failure.ignore=false"
                         }
                         
                         // update develop version

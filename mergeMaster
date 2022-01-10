@@ -8,7 +8,7 @@ node() {
         def CREDENT = '5540db2b-369e-4a48-820e-f0970c41dd9a'
         
         def infos = params.infos.trim().replace('Back End=', '').replace('Front End=', '').replace('public API','Public-API').split(' ')
-        def branch_var = 'arthur_'
+        def branch_var = ''
         
         // format services
         services = [];
@@ -18,44 +18,61 @@ node() {
                 continue
             }
             name = info.split('=')[0]
-            realName = translateName(name)
-            services.add(realName);
+            if (info.split('=')[1] && info.split('=')[1].split('-')[1] && name != 'commons') {
+                version = info.split('=')[1].split('-')[1]
+            } else {
+                continue
+            }
+            realName = translateName(name.toLowerCase())
+            services.add("${realName}=${version}");
         }
         services.unique()
 
-
         for (info in services) {
             cleanWs()
-
             name = info.split('=')[0]
-            dev_branch = 'develop'
-
+            version = info.split('=')[1]
+            releaseName = "release-${version}"
             try {
                 stage(name) {
                     // pull code from remote
                     git url: "${URL_ASIAN_SPECT}${name}.git",
                     credentialsId: CREDENT,
-                    branch: dev_branch
+                    branch: 'master'
                     
                     withCredentials([usernamePassword(credentialsId: CREDENT, usernameVariable: "GIT_USERNAME", passwordVariable: "GIT_PASSWORD")]) {
+                        // pull relase to master
                         try {
                             sh "git checkout ${branch_var}master"
                         } catch (err) {
                             sh "git checkout -b ${branch_var}master"
                         }
-                        sh "git pull origin master"
+                        sh "git pull origin ${releaseName}"
                         sh "git push origin ${branch_var}master"
 
-                        if (name != 'LT' && name != 'commons') {
-                            // sh "git checkout ${branch_var}${dev_branch}"
-                            // sh "git pull origin ${branch_var}${dev_branch}"
-                            try {
-                                sh "git checkout ${branch_var}${dev_branch}"
-                                sh "git pull origin ${branch_var}${dev_branch}"
-                            } catch (err) {
-                                sh "git checkout -b ${branch_var}${dev_branch}"
+                        // create release-version tag
+                        sh "git tag ${releaseName}"
+                        sh "git push origin ${releaseName}"
+
+                        // pull relase to develop
+                        try {
+                            if (name == 'LT') {
+                                sh "git checkout ${branch_var}DEVELOPMENT"
+                            } else {
+                                sh "git checkout ${branch_var}develop"
                             }
-                            sh "git push origin ${branch_var}master"
+                        } catch (err) {
+                            if (name == 'LT') {
+                                sh "git checkout -b ${branch_var}DEVELOPMENT"
+                            } else {
+                                sh "git checkout -b ${branch_var}develop"
+                            }
+                        }
+                        sh "git pull origin ${releaseName}"
+                        if (name == 'LT') {
+                            sh "git push origin ${branch_var}DEVELOPMENT"
+                        } else {
+                            sh "git push origin ${branch_var}develop"
                         }
                     }
                 }
@@ -84,12 +101,15 @@ def translateName(name) {
         case 'data-services':
         case 'data-services-api':
         case 'doc-service':
+        case 'Doc-service':
         case 'doc-services-api':
         case 'document-service':
         case 'external-service':
+        case 'External-service':
         case 'external-service-api':
         case 'external-services-api':
         case 'program-service':
+        case 'Program-service':
         case 'program-services-api':
         case 'program-web':
             realName = 'LT'
